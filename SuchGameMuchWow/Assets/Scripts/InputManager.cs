@@ -14,14 +14,15 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		doge.moveDir = 0;
+
 		if(Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
 		{
 			doge.moveDir = -1f;
 		}
-		if(!Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
+		else if(!Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
 		{
 			doge.moveDir = 1f;
 		}
+		else doge.moveDir = 0;
 	}
 }

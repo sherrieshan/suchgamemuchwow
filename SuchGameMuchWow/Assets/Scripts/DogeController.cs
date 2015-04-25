@@ -16,7 +16,7 @@ public class DogeController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		anim = GetComponent<Animator> ();
+		anim = this.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
