@@ -1,0 +1,12 @@
+*.sln
+*.csproj
+*.unityproj
+Library/
+Temp/
+*.app
+Untitled_Data/
+Untitled.app/
+*.suo
+*.userprefs
+UntitledMac.zip
+UntitledPC.zip
