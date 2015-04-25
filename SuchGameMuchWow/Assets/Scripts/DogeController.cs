@@ -4,9 +4,11 @@ using System.Collections;
 public class DogeController : MonoBehaviour {
 
 	public float moveDir = 0;
-	public bool facingRight = false;
+	public bool facingRight = true;
 	
 	public bool isGrounded = false;
+	
+	public bool isTwinkie = false;
 	
 	public Animator anim;
 	public Transform groundCheck;
@@ -49,5 +51,11 @@ public class DogeController : MonoBehaviour {
 	{
 		if(isGrounded)
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f));
+	}
+	
+	public void setTwinkie(bool t)
+	{
+		isTwinkie = t;
+		anim.SetBool("Twinkie", isTwinkie);
 	}
 }
