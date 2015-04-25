@@ -9,6 +9,8 @@ public class DogeController : MonoBehaviour {
 	public bool isGrounded = false;
 	
 	public Animator anim;
+	public Transform groundCheck;
+	public LayerMask groundMask;
 	
 	public float jumpForce = 700f;
 	public float maxSpeed = 5f;
@@ -30,7 +32,8 @@ public class DogeController : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, 0);
+		isGrounded = Physics2D.OverlapPoint (groundCheck.position, groundMask);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 		anim.SetFloat("Speed", Mathf.Abs(moveDir));
 	}
 	
@@ -40,5 +43,11 @@ public class DogeController : MonoBehaviour {
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+	
+	public void jump()
+	{
+		if(isGrounded)
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f));
 	}
 }

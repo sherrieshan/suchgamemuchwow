@@ -24,5 +24,10 @@ public class InputManager : MonoBehaviour {
 			doge.moveDir = 1f;
 		}
 		else doge.moveDir = 0;
+		
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			doge.jump();
+		}
 	}
 }
