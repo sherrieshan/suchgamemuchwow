@@ -33,12 +33,12 @@ public class Health : MonoBehaviour {
 		}
 	}
 
-	void addScore(int score) {
+	public void addScore(int score) {
 		hit = true;
 		health += score;
 	}
 
-	void takeDamage(int damage) {
+	public void takeDamage(int damage) {
 		hit = true;
 		health -= damage;
 	}

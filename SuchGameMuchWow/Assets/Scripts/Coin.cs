@@ -20,6 +20,7 @@ public class Coin : MonoBehaviour {
 	{
 		if(timeInstantiated < doge.timeHitRightWall)
 		{
+			doge.GetComponent<Health>().takeDamage(3);
 			Destroy(this.gameObject);
 		}
 	}
@@ -28,7 +29,7 @@ public class Coin : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			
+			doge.GetComponent<Health>().addScore(1);
 			Destroy (this.gameObject);	
 		}
 	}
