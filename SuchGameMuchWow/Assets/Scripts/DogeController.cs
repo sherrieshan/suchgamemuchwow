@@ -43,10 +43,12 @@ public class DogeController : MonoBehaviour {
 	void FixedUpdate()
 	{
 		isGrounded = Physics2D.OverlapPoint (groundCheck.position, groundMask);
-		if(!isTwinkie)
+		if(isDoge)
 			GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-		else
+		else if(isTwinkie)
 			GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, yDir * maxSpeed*2f/3f);
+		else if(isOrange)
+			GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed * 1.5f, GetComponent<Rigidbody2D>().velocity.y);
 		anim.SetFloat("Speed", Mathf.Abs(moveDir));
 	}
 	
@@ -64,7 +66,7 @@ public class DogeController : MonoBehaviour {
 		if(isGrounded && !isTwinkie)
 		{
 			audios.PlayOneShot(jumpSound);
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f));
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f + (isOrange? 200f : 0f)));
 		}
 	}
 	
@@ -87,7 +89,7 @@ public class DogeController : MonoBehaviour {
 		anim.SetBool("Doge", isDoge);
 		isTwinkie = !t;
 		anim.SetBool("Twinkie", isTwinkie);
-		GetComponent<Rigidbody2D>().gravityScale = 0;
+		GetComponent<Rigidbody2D>().gravityScale = 1;
 	}
 
 	public void setDoge(bool t)
@@ -98,6 +100,6 @@ public class DogeController : MonoBehaviour {
 		anim.SetBool("Orange", isOrange);
 		isTwinkie = !t;
 		anim.SetBool("Twinkie", isTwinkie);
-		GetComponent<Rigidbody2D>().gravityScale = 0;
+		GetComponent<Rigidbody2D>().gravityScale = 1;
 	}
 }
