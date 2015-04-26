@@ -29,6 +29,7 @@ public class DogeController : MonoBehaviour {
 	{
 		anim = this.GetComponent<Animator> ();
 		audios = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<AudioSource>();
+		anim.SetBool("Doge", isDoge);
 	}
 	
 	// Update is called once per frame
