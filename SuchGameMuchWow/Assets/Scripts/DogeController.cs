@@ -4,6 +4,7 @@ using System.Collections;
 public class DogeController : MonoBehaviour {
 
 	public float moveDir = 0;
+	public float yDir = 0;
 	public bool facingRight = true;
 	
 	public bool isGrounded = false;
@@ -40,7 +41,10 @@ public class DogeController : MonoBehaviour {
 	void FixedUpdate()
 	{
 		isGrounded = Physics2D.OverlapPoint (groundCheck.position, groundMask);
-		GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+		if(!isTwinkie)
+			GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+		else
+			GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir * maxSpeed, yDir * maxSpeed*2f/3f);
 		anim.SetFloat("Speed", Mathf.Abs(moveDir));
 	}
 	
@@ -55,7 +59,7 @@ public class DogeController : MonoBehaviour {
 	public void jump()
 	{
 		Debug.Log ("Jumping");
-		if(isGrounded)
+		if(isGrounded && !isTwinkie)
 		{
 			audios.PlayOneShot(jumpSound);
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f));
@@ -66,5 +70,6 @@ public class DogeController : MonoBehaviour {
 	{
 		isTwinkie = t;
 		anim.SetBool("Twinkie", isTwinkie);
+		GetComponent<Rigidbody2D>().gravityScale = 0;
 	}
 }

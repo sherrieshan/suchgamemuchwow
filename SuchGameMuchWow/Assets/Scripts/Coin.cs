@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Coin : MonoBehaviour {
 	
-	public float speed = -5f;
+	public float speed = -3f;
 	public float timeInstantiated = 0;
 	public DogeController doge;
 	

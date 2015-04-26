@@ -4,8 +4,9 @@ using System.Collections;
 public class Twinkie : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-3f, 0f);
 	}
 	
 	// Update is called once per frame

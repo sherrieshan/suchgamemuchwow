@@ -29,5 +29,18 @@ public class InputManager : MonoBehaviour {
 		{
 			doge.jump();
 		}
+		
+		if(doge.isTwinkie)
+		{
+			if(Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
+			{
+				doge.yDir = -1;
+			}
+			else if(!Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.UpArrow))
+			{
+				doge.yDir = 1;
+			}
+			else doge.yDir = 0;
+		}
 	}
 }
