@@ -28,8 +28,8 @@ public class Health : MonoBehaviour {
 			startingHealth = start;
 			healthText.text = startingHealth;
 			hit = false;
-			//if(health <= 0)
-				//Death();
+			if(health <= 0)
+				Death();
 		}
 	}
 
@@ -53,8 +53,9 @@ public class Health : MonoBehaviour {
 		died = true;
 		anim.SetBool ("Death", died);
 		yield return new WaitForSeconds(time);
-		died = false;
-		anim.SetBool ("Death", died);
+		Application.LoadLevel(2);
+		//died = false;
+		//anim.SetBool ("Death", died);
 		
 	}
 }
