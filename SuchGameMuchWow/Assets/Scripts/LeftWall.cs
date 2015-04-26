@@ -3,9 +3,12 @@ using System.Collections;
 
 public class LeftWall : MonoBehaviour {
 
+	public Health dogeHealth;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		dogeHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 	}
 	
 	// Update is called once per frame
@@ -17,6 +20,7 @@ public class LeftWall : MonoBehaviour {
 	{
 		if(other.tag == "coin")
 		{
+			dogeHealth.takeDamage(3);
 			Destroy(other.gameObject);
 		}
 	}

@@ -5,6 +5,7 @@ public class WallTrigger : MonoBehaviour {
 	GameObject dogeTrig;
 	public Houses house1;
 	public Houses house2;
+	public Killer killer;
 	float posX;
 
 	// Use this for initialization
@@ -27,6 +28,7 @@ public class WallTrigger : MonoBehaviour {
 			other.GetComponent<Transform>().position = new Vector2(posX, y);
 			house1.reset();
 			house2.reset ();
+			killer.reset();
 		}
 	}
 }

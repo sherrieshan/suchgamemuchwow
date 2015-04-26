@@ -24,21 +24,21 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (hit) {
+			if(health <= 0)
+				Death();
 			string start = health.ToString();
 			startingHealth = start;
 			healthText.text = startingHealth;
 			hit = false;
-			if(health <= 0)
-				Death();
 		}
 	}
 
-	void addScore(int score) {
+	public void addScore(int score) {
 		hit = true;
 		health += score;
 	}
 
-	void takeDamage(int damage) {
+	public void takeDamage(int damage) {
 		hit = true;
 		health -= damage;
 	}
@@ -51,7 +51,7 @@ public class Health : MonoBehaviour {
 	IEnumerator deathRoutine(float time)
 	{
 		died = true;
-		anim.SetBool ("Death", died);
+		anim.SetBool ("Died", died);
 		yield return new WaitForSeconds(time);
 		Application.LoadLevel(2);
 		//died = false;
