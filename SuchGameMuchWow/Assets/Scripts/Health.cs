@@ -51,6 +51,7 @@ public class Health : MonoBehaviour {
 	IEnumerator deathRoutine(float time)
 	{
 		died = true;
+		GetComponentInParent<Rigidbody2D> ().AddForce (new Vector2(800f, 800f));
 		anim.SetBool ("Died", died);
 		yield return new WaitForSeconds(time);
 		Application.LoadLevel(2);
