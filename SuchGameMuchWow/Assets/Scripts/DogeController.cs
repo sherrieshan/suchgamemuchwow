@@ -49,6 +49,7 @@ public class DogeController : MonoBehaviour {
 	
 	public void jump()
 	{
+		Debug.Log ("Jumping");
 		if(isGrounded)
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f));
 	}
