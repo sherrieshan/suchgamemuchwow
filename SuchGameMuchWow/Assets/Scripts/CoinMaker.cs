@@ -9,10 +9,12 @@ public class CoinMaker : MonoBehaviour {
 	public Bone bone;
 	public Twinkie twinkie;
 	
+	public float max = 65f;
 	public float delay = 0;
 	public float upgradeDelay = 0;
 	public float timeCoinMade = 0;
 	public float timeUpgradeMade = 0;
+	public float timeSinceUpgrade = 0;
 	public float offset = 0;
 
 	// Use this for initialization
@@ -27,12 +29,14 @@ public class CoinMaker : MonoBehaviour {
 	{
 		if(Time.time - timeCoinMade > delay)
 		{
+			delay = Random.Range (15f,max)/100;
 			timeCoinMade = Time.time;
 			offset = Random.Range(.5f,7f);
 			Instantiate(coin, new Vector2(this.transform.position.x, this.transform.position.y - offset), Quaternion.identity);
 		}
 		if(Time.time - timeUpgradeMade > upgradeDelay)
 		{
+			upgradeDelay = Random.Range(5,10);
 			timeUpgradeMade = Time.time;
 			offset = Random.Range (.5f,7f);
 			switch(Random.Range (1,4))
@@ -47,6 +51,11 @@ public class CoinMaker : MonoBehaviour {
 					Instantiate(twinkie, new Vector2(this.transform.position.x, this.transform.position.y - offset), Quaternion.identity);
 					break;
 			}
+		}
+		if(Time.time - timeSinceUpgrade > 10 && max > 20f)
+		{
+			timeSinceUpgrade = Time.time;
+			max -= 5f;
 		}
 	}
 }

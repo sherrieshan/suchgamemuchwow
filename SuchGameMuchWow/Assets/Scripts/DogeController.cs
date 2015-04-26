@@ -67,7 +67,12 @@ public class DogeController : MonoBehaviour {
 		if(isGrounded && !isTwinkie)
 		{
 			audios.PlayOneShot(jumpSound);
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f + (isOrange? 200f : 0f)));
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 350f + (isOrange? 250f : 0f)));
+		}
+		else if(isOrange && transform.position.y < 0)
+		{
+			audios.PlayOneShot(jumpSound);
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300f + (isOrange? 300f : 0f)));
 		}
 	}
 	
