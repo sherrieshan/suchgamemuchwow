@@ -23,6 +23,7 @@ public class WallTrigger : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			float y = other.GetComponent<Transform>().position.y;
+			other.GetComponentInParent<DogeController>().timeHitRightWall = Time.time;
 			other.GetComponent<Transform>().position = new Vector2(posX, y);
 			house1.reset();
 			house2.reset ();
