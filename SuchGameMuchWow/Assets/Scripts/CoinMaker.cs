@@ -39,7 +39,7 @@ public class CoinMaker : MonoBehaviour {
 			upgradeDelay = Random.Range(5,10);
 			timeUpgradeMade = Time.time;
 			offset = Random.Range (.5f,7f);
-			switch(Random.Range (1,4))
+			switch(Random.Range (1,5))
 			{
 				case 1:
 					Instantiate(orange, new Vector2(this.transform.position.x, this.transform.position.y - offset), Quaternion.identity);
@@ -49,6 +49,9 @@ public class CoinMaker : MonoBehaviour {
 					break;
 				case 3:
 					Instantiate(twinkie, new Vector2(this.transform.position.x, this.transform.position.y - offset), Quaternion.identity);
+					break;
+				case 4:
+					Instantiate(bone, new Vector2(this.transform.position.x, this.transform.position.y - offset), Quaternion.identity);
 					break;
 			}
 		}
