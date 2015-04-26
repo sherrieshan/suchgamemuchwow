@@ -8,8 +8,10 @@ public class DogeController : MonoBehaviour {
 	public bool facingRight = true;
 	
 	public bool isGrounded = false;
-	
+
+	public bool isDoge = true;
 	public bool isTwinkie = false;
+	public bool isOrange = false;
 	
 	public Animator anim;
 	public Transform groundCheck;
@@ -69,6 +71,32 @@ public class DogeController : MonoBehaviour {
 	public void setTwinkie(bool t)
 	{
 		isTwinkie = t;
+		anim.SetBool("Twinkie", isTwinkie);
+		isOrange = !t;
+		anim.SetBool("Orange", isOrange);
+		isDoge = !t;
+		anim.SetBool("Doge", isDoge);
+		GetComponent<Rigidbody2D>().gravityScale = 0;
+	}
+
+	public void setOrange(bool t)
+	{
+		isOrange = t;
+		anim.SetBool("Orange", isOrange);
+		isDoge = !t;
+		anim.SetBool("Doge", isDoge);
+		isTwinkie = !t;
+		anim.SetBool("Twinkie", isTwinkie);
+		GetComponent<Rigidbody2D>().gravityScale = 0;
+	}
+
+	public void setDoge(bool t)
+	{
+		isDoge = t;
+		anim.SetBool("Doge", isDoge);
+		isOrange = !t;
+		anim.SetBool("Orange", isOrange);
+		isTwinkie = !t;
 		anim.SetBool("Twinkie", isTwinkie);
 		GetComponent<Rigidbody2D>().gravityScale = 0;
 	}
